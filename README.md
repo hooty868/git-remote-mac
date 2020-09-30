@@ -2,6 +2,8 @@
 
 使用 Node.js + Express 打造的餐廳美食搜索網站，再加上搜尋餐廳資料等功能。
 
+## 畫面截圖
+![首頁](https://upload.cc/i1/2020/10/01/HeuYF1.png)
 
 ## Features - 產品功能
 
@@ -43,6 +45,17 @@ cd restaurantList
 在 Terminal 輸入 nodemon app.js 指令
 ```
 
+5. 透過nodemon啟動專案
+
+```
+npm run dev
+```
+
+6. 開啟遊覽器，並收尋本地頁面
+
+```
+遊覽器網址輸入：http://localhost:3000/
+```
 
 ## Contributor - 專案開發人員
 
