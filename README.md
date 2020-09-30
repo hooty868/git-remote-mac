@@ -13,7 +13,7 @@
 ## Environment SetUp - 環境建置
 
 1. [Node.js](https://nodejs.org/en/)
-2. [npm]https://www.npmjs.com/
+2. [npm](https://www.npmjs.com/)
 3. [Express.js](https://expressjs.com/)
 
 
