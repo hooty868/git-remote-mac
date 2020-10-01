@@ -60,3 +60,4 @@ npm run dev
 ## Contributor - 專案開發人員
 
 > [hooty868](https://github.com/hooty868)
+> [技術部落格](https://medium.com/@hooty868)
