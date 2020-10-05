@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const todoSchema = new Schema({
+const restaurantSchema = new Schema({
   id: {
-    type: number
+    type: Number
   }, name: {
     type: String, // 資料型別是字串
   }, name_en: {
@@ -17,12 +17,10 @@ const todoSchema = new Schema({
     type: String, // 資料型別是字串
   }, google_map: {
     type: String, // 資料型別是字串
-  }, google_map: {
-    type: String, // 資料型別是字串
   }, rating: {
-    type: number, // 資料型別是字串
+    type: Number, // 資料型別是字串
   }, description: {
     type: String, // 資料型別是字串
   }
 })
-module.exports = mongoose.model('Todo', todoSchema)
+module.exports = mongoose.model('restaurant', restaurantSchema)

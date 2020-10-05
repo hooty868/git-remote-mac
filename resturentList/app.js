@@ -26,9 +26,6 @@ app.set('view engine', 'handlebars')
 // setting static files
 app.use(express.static('public'))
 
-// require restaurant list JASON file
-const restaurantList = require('./restaurant.json')
-
 // setting the route and corresponding response
 app.get('/', (req, res) => {
   res.render('index', { restaurants: restaurantList.results })
