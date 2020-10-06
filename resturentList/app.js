@@ -46,6 +46,7 @@ app.get('/restaurants/new', (req, res) => {
   return res.render('new')
 })
 
+// new a restaurant post
 app.post('/restaurants', (req, res) => {
   const name = req.body.name
   const category = req.body.category
@@ -59,6 +60,7 @@ app.post('/restaurants', (req, res) => {
     .catch(error => console.log(error))
 })
 
+// connect an edit restaurant post
 app.get('/restaurants/:id', (req, res) => {
   const id = req.params.id
   return restaurantList.findById(id)
@@ -67,6 +69,39 @@ app.get('/restaurants/:id', (req, res) => {
     .catch(error => console.log(error))
 })
 
+//new edit restaurant post templete
+app.get('/restaurants/:id/edit', (req, res) => {
+  const id = req.params.id
+  return restaurantList.findById(id)
+    .lean()
+    .then((restaurant) => res.render('edit', { restaurant }))
+    .catch(error => console.log(error))
+})
+
+//renew edit restaurant post
+app.post('/restaurants/:id/edit', (req, res) => {
+  const id = req.params.id
+  const name = req.body.name
+  const category = req.body.category
+  const location = req.body.location
+  const phone = req.body.phone
+  const description = req.body.description
+  const image = req.body.image
+  const rating = req.body.rating
+  return restaurantList.findById(id)
+    .then(restaurant => {
+      restaurant.name = name
+      restaurant.category = category
+      restaurant.location = location
+      restaurant.phone = phone
+      restaurant.description = description
+      restaurant.image = image
+      restaurant.rating = rating
+      return restaurant.save()
+    })
+    .then(() => res.redirect(`/restaurants/${id}`))
+    .catch(error => console.log(error))
+})
 // Listen the server when it started
 app.listen(port, () => {
   console.log(`Express is running on http://localhost:${port}`)
