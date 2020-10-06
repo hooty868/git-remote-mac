@@ -15,12 +15,12 @@
 
 ## Environment SetUp - 環境建置
 
-- [[Visual Studio Code](https://visualstudio.microsoft.com/zh-hant/) - 開發環境
-- [[Node.js](https://nodejs.org/en/)
-- [[npm](https://www.npmjs.com/)
-- [[Express.js](https://expressjs.com/)
-- [[MongoDB](https://www.mongodb.com/) - 資料庫
-- [[Mongoose](https://www.npmjs.com/package/mongoose) - MongoDB 的 ODM 可以在程式中與資料庫溝通
+- [[Visual Studio Code]](https://visualstudio.microsoft.com/zh-hant/) - 開發環境
+- [[Node.js]](https://nodejs.org/en/)
+- [[npm]](https://www.npmjs.com/)
+- [[Express.js]](https://expressjs.com/)
+- [[MongoDB]](https://www.mongodb.com/) - 資料庫
+- [[Mongoose]](https://www.npmjs.com/package/mongoose) - MongoDB 的 ODM 可以在程式中與資料庫溝通
 
 
 ## Installing - 專案安裝流程
