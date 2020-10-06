@@ -47,21 +47,19 @@ cd restaurantList
 
 ```
 npm run insertSeeds  //執行增加資料至 MongoDB
-```
-
-5.終端顯示 `users insert done! 及 restaurants insert done!` 即完成新增資料
+終端顯示 `users insert done! 及 restaurants insert done!` 即完成新增資料
 
 ```
-Ctrl+C *2  //連按兩下Ctrl+C結束批次工作
-````
-6. 透過nodemon啟動專案
+5.Ctrl+C *2  //連按兩下Ctrl+C結束批次工作
+
+6.透過npm啟動專案
 
 ```
 npm run dev //執行程式
 終端顯示 `db is connected!` 即啟動完成
 ```
 
-6. 開啟遊覽器，並收尋本地頁面
+7. 開啟遊覽器，並收尋本地頁面
 
 ```
 遊覽器網址輸入：http://localhost:3000/
