@@ -40,7 +40,8 @@
           編輯頁面
         </a>
 
-      <form action="./{{restaurant._id}}/delete" method="POST" style="display: inline;">
+      <form action="./{{restaurant._id}}/delete" method="POST" style="display: inline;"
+        onsubmit="return confirm('確定要刪除「{{ this.name }}」嗎?')">
         <button type="submit">刪除</button>
       </form>
 
