@@ -16,9 +16,9 @@
 ## Environment SetUp - 環境建置
 
 - [[Visual Studio Code]](https://visualstudio.microsoft.com/zh-hant/) - 開發環境
-- [[Node.js]](https://nodejs.org/en/)
-- [[npm]](https://www.npmjs.com/)
-- [[Express.js]](https://expressjs.com/)
+- [[Node.js]](https://nodejs.org/en/) - 後端語言
+- [[npm]](https://www.npmjs.com/) - 套件管理
+- [[Express.js]](https://expressjs.com/) - 後端框架
 - [[MongoDB]](https://www.mongodb.com/) - 資料庫
 - [[Mongoose]](https://www.npmjs.com/package/mongoose) - MongoDB 的 ODM 可以在程式中與資料庫溝通
 
