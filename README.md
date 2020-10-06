@@ -1,22 +1,26 @@
 # 熱門餐廳網
 
-使用 Node.js + Express 打造的餐廳美食搜索網站，再加上搜尋餐廳資料等功能。
+使用 Node.js + Express框架 並利用mongodb作為後端資料庫，打造的餐廳美食搜索網站，再加上搜尋餐廳資料等功能。
 
 ## 畫面截圖
 ![首頁](https://upload.cc/i1/2020/10/01/HeuYF1.png)
 
 ## Features - 產品功能
 
-1. 使用者可以點擊任一餐廳，查看更多餐廳資訊，如地址、電話與簡介
-2. 使用者可以瀏覽一家餐廳的詳細資訊
-3. 使用者可以依照中文名稱、英文名稱與餐廳類別進行搜尋
-4. 使用者可以瀏覽全部所有餐廳
+1.使用者可以新增一家餐廳
+2.使用者可以瀏覽一家餐廳的詳細資訊
+3.使用者可以瀏覽全部所有餐廳
+4.使用者可以修改一家餐廳的資訊
+5.使用者可以刪除一家餐廳
 
 ## Environment SetUp - 環境建置
 
-1. [Node.js](https://nodejs.org/en/)
-2. [npm](https://www.npmjs.com/)
-3. [Express.js](https://expressjs.com/)
+- [[Visual Studio Code](https://visualstudio.microsoft.com/zh-hant/) - 開發環境
+- [[Node.js](https://nodejs.org/en/)
+- [[npm](https://www.npmjs.com/)
+- [[Express.js](https://expressjs.com/)
+- [[MongoDB](https://www.mongodb.com/) - 資料庫
+- [Mongoose](https://www.npmjs.com/package/mongoose) - MongoDB 的 ODM 可以在程式中與資料庫溝通
 
 
 ## Installing - 專案安裝流程
@@ -45,10 +49,22 @@ cd restaurantList
 在 Terminal 輸入 nodemon app.js 指令
 ```
 
-5. 透過nodemon啟動專案
+5.產生預設使用者及餐廳資料至 MongoDB
 
 ```
-npm run dev
+npm run insertSeeds  //執行增加資料至 MongoDB
+```
+
+終端顯示 `users insert done! 及 restaurants insert done!` 即完成新增資料
+
+```
+Ctrl+C *2  //連按兩下Ctrl+C結束批次工作
+````
+6. 透過nodemon啟動專案
+
+```
+npm run dev //執行程式
+終端顯示 `db is connected!` 即啟動完成
 ```
 
 6. 開啟遊覽器，並收尋本地頁面
