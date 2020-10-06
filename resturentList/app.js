@@ -1,8 +1,10 @@
 // Include express from node_modules and define server related variables
 const express = require('express')
 const mongoose = require('mongoose') // 載入 mongoose
+const bodyParser = require('body-parser')// 引用 body-parser
 const app = express()
 const port = 3000
+
 // require express-handlebars here
 const exphbs = require('express-handlebars')
 
@@ -16,8 +18,14 @@ db.on('error', () => {
   console.log('mongodb error!')
 })
 db.once('open', () => {
-  console.log('mongodb connected!')
+  console.log('mongodb server connected!')
 })
+
+// 載入 restaurantslist model
+const restaurantList = require('./models/resList')
+
+// 用 app.use 規定每一筆請求都需要透過 body-parser 進行前置處理
+app.use(bodyParser.urlencoded({ extended: true }))
 
 // setting template engine
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
@@ -28,20 +36,35 @@ app.use(express.static('public'))
 
 // setting the route and corresponding response
 app.get('/', (req, res) => {
-  res.render('index', { restaurants: restaurantList.results })
+  restaurantList.find() // 取出 Todo model 裡的所有資料
+    .lean() // 把 Mongoose 的 Model 物件轉換成乾淨的 JavaScript 資料陣列
+    .then(restaurants => res.render('index', { restaurants })) // 將資料傳給 index 樣板
+    .catch(error => console.error(error)) // 錯誤處理
 })
 
-app.get('/restaurants/:restaurant_id', (req, res) => {
-  const restaurant = restaurantList.results.find(restaurant => restaurant.id.toString() === req.params.restaurant_id)
-  res.render('show', { restaurant: restaurant })
+app.get('/restaurants/new', (req, res) => {
+  return res.render('new')
 })
 
-app.get('/search', (req, res) => {
-  const keyword = req.query.keyword
-  const restaurant = restaurantList.results.filter(restaurant => {
-    return restaurant.name.toLowerCase().includes(keyword.toLowerCase())
-  })
-  res.render('index', { restaurants: restaurant })
+app.post('/restaurants', (req, res) => {
+  const name = req.body.name
+  const category = req.body.category
+  const location = req.body.location
+  const phone = req.body.phone
+  const description = req.body.description
+  const image = req.body.image
+  const rating = req.body.rating
+  return restaurantList.create({ name, category, location, phone, description, image, rating })     // 存入資料庫
+    .then(() => res.redirect('/')) // 新增完成後導回首頁
+    .catch(error => console.log(error))
+})
+
+app.get('/restaurants/:id', (req, res) => {
+  const id = req.params.id
+  return restaurantList.findById(id)
+    .lean()
+    .then((restaurant) => res.render('show', { restaurant }))
+    .catch(error => console.log(error))
 })
 
 // Listen the server when it started

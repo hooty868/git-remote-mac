@@ -18,7 +18,7 @@ const restaurantSchema = new Schema({
   }, google_map: {
     type: String, // 資料型別是字串
   }, rating: {
-    type: Number, // 資料型別是字串
+    type: Number, // 資料型別是數字
   }, description: {
     type: String, // 資料型別是字串
   }

@@ -1,0 +1,89 @@
+<!-- restaurant Showlist -->
+<h1 class="mb-1 restaurant-show-title">新增餐廳</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-10 mx-auto">
+
+      <p class="mb-1">
+      <form action="/restaurants" method="POST">
+        <div class="row">
+          <div class="col-12">
+            <span class="text-secondary">
+              <i class="fas fa-utensils pr-2"></i>
+              餐廳名字：
+            </span>
+            <input type="text" placeholder="name" name="name">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <span class="text-secondary">
+              <i class="fas fa-utensils pr-2"></i>
+              類別：
+            </span>
+            <input type="text" placeholder="category" name="category">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <span class="text-secondary">
+              <i class="fas fa-utensils pr-2"></i>
+              推薦程度:1~5
+            </span>
+            <input type="number" step="0.1" placeholder="rating" name="rating">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <span class="text-secondary">
+              <i class="fas fa-utensils pr-2"></i>
+              地址：
+            </span>
+            <input type="text" placeholder="location" name="location">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <span class="text-secondary">
+              <i class="fas fa-utensils pr-2"></i>
+              電話：
+            </span>
+            <input type="text" placeholder="phone" name="phone">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <span class="text-secondary">
+              <i class="fas fa-utensils pr-2"></i>
+              描述：
+            </span>
+            <input type="text" placeholder="description" name="description">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <span class="text-secondary">
+              <i class="fas fa-utensils pr-2"></i>
+              餐廳圖片網址：
+            </span>
+            <input type="text" placeholder="image address" name="image">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <button type="submit" class="btn btn-outline-secondary">Create</button>
+          </div>
+        </div>
+    </div>
+    </form>
+
+  </div>
+</div>
+</div>
