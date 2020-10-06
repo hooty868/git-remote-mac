@@ -43,19 +43,13 @@ cd restaurantList
 在 Terminal 輸入 npm install 指令
 ```
 
-4. 安裝 nodemon 套件
-
-```
-在 Terminal 輸入 nodemon app.js 指令
-```
-
-5.產生預設使用者及餐廳資料至 MongoDB
+4.產生預設使用者及餐廳資料至 MongoDB
 
 ```
 npm run insertSeeds  //執行增加資料至 MongoDB
 ```
 
-終端顯示 `users insert done! 及 restaurants insert done!` 即完成新增資料
+5.終端顯示 `users insert done! 及 restaurants insert done!` 即完成新增資料
 
 ```
 Ctrl+C *2  //連按兩下Ctrl+C結束批次工作
