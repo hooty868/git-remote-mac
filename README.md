@@ -3,7 +3,7 @@
 使用 Node.js + Express框架 並利用mongodb作為後端資料庫，打造的餐廳美食搜索網站，再加上搜尋餐廳資料等功能。
 
 ## 畫面截圖
-![首頁](https://github.com/hooty868/git-remote-mac/resturentList/public/image_screenshot/螢幕快照.png)
+![首頁](https://github.com/hooty868/git-remote-mac/blob/master/resturentList/public/image_screenshot/%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7.png)
 
 ## Features - 產品功能
 
