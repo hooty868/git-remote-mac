@@ -9,7 +9,7 @@
         編輯頁面
       </a>
 
-      <form action="./{{restaurant._id}}/delete" method="POST" style="display: inline;"
+      <form action="./{{restaurant._id}}?_method=DELETE" method="POST" style="display: inline;"
         onsubmit="return confirm('確定要刪除「{{ restaurant.name }}」嗎?')">
         <button type="submit" class=" btn btn-outline-secondary">
           刪除

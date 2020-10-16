@@ -31,9 +31,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
           <a class="dropdown-item" href="/restaurants/sortrataioRaising">評分由高到低</a>
-          <a class="dropdown-item" href="#">評分由低到高</a>
-          <a class="dropdown-item" href="#">類型</a>
-          <a class="dropdown-item" href="#">地區</a>
+          <a class="dropdown-item" href="/restaurants/sortrataioDescending">評分由低到高</a>
         </div>
       </div>
     </div>
@@ -81,7 +79,7 @@
                     </button>
                   </div>
                   <div class="col-4">
-                    <form action="/restaurants/{{ this._id }}/delete" method="POST" style="display: inline;"
+                    <form action="/restaurants/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;"
                       onsubmit="return confirm('確定要刪除「{{ this.name }}」嗎?')">
                       <button type="submit" class="btn btn-outline-secondary">刪除</button>
                     </form>

@@ -6,6 +6,10 @@ const routes = require('./routes')// 引用路由器
 const app = express()
 const port = 3000
 let listlength = 0 // 為了引入id先把資料物件陣列長度算出，則加入新的在＋1就好
+// 載入 method-override
+const methodOverride = require('method-override')
+// 設定每一筆請求都會透過 methodOverride 進行前置處理
+app.use(methodOverride('_method'))
 
 // require express-handlebars here
 const exphbs = require('express-handlebars')
@@ -39,15 +43,6 @@ app.use(express.static('public'))
 // 將 request 導入路由器
 app.use(routes)
 
-// setting the route and corresponding response
-app.get('/', (req, res) => {
-  restaurantList.find() // 取出 Todo model 裡的所有資料
-    .lean() // 把 Mongoose 的 Model 物件轉換成乾淨的 JavaScript 資料陣列
-    .then(restaurants => res.render('index', { restaurants })) // 將資料傳給 index 樣板
-  restaurantList.find().lean().then(restaurants => listlength = restaurants.length) // 將資料傳給 index 樣板
-    .catch(error => console.error(error)) // 錯誤處理
-})
-
 // search specific restaurant post
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword.trim()
@@ -78,6 +73,14 @@ app.get('/restaurants/sortrataioRaising', (req, res) => {
     .catch(error => console.error(error)) // 錯誤處理
 })
 
+app.get('/restaurants/sortrataioDescending', (req, res) => {
+  restaurantList.find() // 取出 Todo model 裡的所有資料
+    .sort({ rating: -1 })
+    .lean() // 把 Mongoose 的 Model 物件轉換成乾淨的 JavaScript 資料陣列
+    .then(restaurants => res.render('index', { restaurants })) // 將資料傳給 index 樣板
+    .catch(error => console.error(error)) // 錯誤處理
+})
+
 // new a restaurant post
 app.post('/restaurants', (req, res) => {
   const name = req.body.name
@@ -103,7 +106,7 @@ app.get('/restaurants/:id', (req, res) => {
     .catch(error => console.log(error))
 })
 
-//new edit restaurant post templete
+// new edit restaurant post templete
 app.get('/restaurants/:id/edit', (req, res) => {
   const id = req.params.id
   return restaurantList.findById(id)
@@ -113,7 +116,7 @@ app.get('/restaurants/:id/edit', (req, res) => {
 })
 
 //renew edit restaurant post
-app.post('/restaurants/:id/edit', (req, res) => {
+app.put('/restaurants/:id', (req, res) => {
   const id = req.params.id
   return restaurantList.findById(id)
     .then(restaurant => {
@@ -125,7 +128,7 @@ app.post('/restaurants/:id/edit', (req, res) => {
 })
 
 // delete restaurant post
-app.post('/restaurants/:id/delete', (req, res) => {
+app.delete('/restaurants/:id', (req, res) => {
   const id = req.params.id
   return restaurantList.findById(id)
     .then(restaurant => restaurant.remove())
