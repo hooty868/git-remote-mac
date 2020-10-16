@@ -1,6 +1,6 @@
 // Include express from node_modules and define server related variables
 const express = require('express')
-const mongoose = require('mongoose') // 載入 mongoose
+require('./config/mongoose')
 const bodyParser = require('body-parser')// 引用 body-parser
 const app = express()
 const port = 3000
@@ -11,19 +11,6 @@ app.use(methodOverride('_method'))
 
 // require express-handlebars here
 const exphbs = require('express-handlebars')
-
-// connect to mongodb
-mongoose.connect('mongodb://localhost/resList', { useNewUrlParser: true, useUnifiedTopology: true }) // 設定連線到 mongoDB
-
-// 取得資料庫連線狀態
-const db = mongoose.connection
-// 連線異常/成功
-db.on('error', () => {
-  console.log('mongodb error!')
-})
-db.once('open', () => {
-  console.log('mongodb server connected!')
-})
 
 // 載入 restaurantslist model
 const restaurantList = require('./models/resList')
