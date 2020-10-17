@@ -1,4 +1,4 @@
-# 熱門餐廳網2.0
+# 熱門餐廳網3.0
 
 使用 Node.js + Express框架 並利用mongodb作為後端資料庫，並利用expressRouter，建立具有RESTful風格的API，打造的餐廳美食搜索網站，再加上搜尋/排序餐廳資料等功能。
 
