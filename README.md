@@ -1,6 +1,7 @@
-# 熱門餐廳網3.0
+# 熱門餐廳網4.0
 
 使用 Node.js + Express框架 並利用mongodb作為後端資料庫，並利用expressRouter，建立具有RESTful風格的API，打造的餐廳美食搜索網站，再加上搜尋/排序餐廳資料等功能。
+近期在新增：登入帳號密碼畫面，及驗證帳密功能
 
 ## 畫面截圖
 ![首頁](https://github.com/hooty868/git-remote-mac/raw/master/resturentList/public/image_screenshot/3.0type.png)
@@ -13,6 +14,8 @@
 4.使用者可以修改一家餐廳的資訊
 5.使用者可以刪除一家餐廳
 6.使用者可以排序評分高低
+7.使用者可以利用有限的帳密組去做登入的動作
+8.如果使用者登入輸入錯誤，會再登入頁面顯示錯誤
 
 ## Environment SetUp - 環境建置
 
