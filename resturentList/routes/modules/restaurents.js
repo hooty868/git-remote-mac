@@ -6,6 +6,10 @@ router.get('/new', (req, res) => {
   return res.render('new')
 })
 
+router.get('/login', (req, res) => {
+  return res.render('login')
+})
+
 router.get('/sortrataioRaising', (req, res) => {
   restaurantList.find() // 取出 Todo model 裡的所有資料
     .sort({ rating: 1 })
@@ -94,6 +98,52 @@ router.delete('/:id', (req, res) => {
     .then(restaurant => restaurant.remove())
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
+})
+
+
+const users = [
+  {
+    firstName: 'Tony',
+    email: 'tony@stark.com',
+    password: 'iamironman'
+  },
+  {
+    firstName: 'Steve',
+    email: 'captain@hotmail.com',
+    password: 'icandothisallday'
+  },
+  {
+    firstName: 'Peter',
+    email: 'peter@parker.com',
+    password: 'enajyram'
+  },
+  {
+    firstName: 'Natasha',
+    email: 'natasha@gamil.com',
+    password: '*parol#@$!'
+  },
+  {
+    firstName: 'Nick',
+    email: 'nick@shield.com',
+    password: 'password'
+  }
+]
+
+router.post('/welcomeuser', (req, res) => {
+  const userEmail = req.body.email
+  const userPassword = req.body.Password
+  if ((users.some(e => (e.email === userEmail) && (e.password === userPassword)))) {
+    return restaurantList.find() // 取出 Todo model 裡的所有資料
+      .lean() // 把 Mongoose 的 Model 物件轉換成乾淨的 JavaScript 資料陣列
+      .then(restaurants => res.render('index', { restaurants })) // 將資料傳給 index 樣板
+      .catch(error => console.error(error)) // 錯誤處理
+  } else {
+    const errorinfo = { error: '..... email or password is error' }
+    return restaurantList.find() // 取出 Todo model 裡的所有資料
+      .lean() // 把 Mongoose 的 Model 物件轉換成乾淨的 JavaScript 資料陣列
+      .then(restaurants => res.render('login', { restaurants, errorinfo })) // 將資料傳給 index 樣板
+      .catch(error => console.error(error)) // 錯誤處理
+  }
 })
 
 module.exports = router
