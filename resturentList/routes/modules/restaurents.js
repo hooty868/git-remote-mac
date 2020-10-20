@@ -130,15 +130,43 @@ const users = [
   }
 ]
 
+// 首先引入 express-session 这个模块
+const session = require('express-session')
+// 设置 session 的可选参数
+router.use(session({
+  secret: '123nmp0345asd', // 建议使用 128 个字符的随机字符串
+  cookie: { maxAge: 60 * 1000 },
+  resave: false,
+  saveUninitialized: false
+}))// 設定 session 设置 cookie 字段 isVisit, 并设置过期时间为1分钟
+
+// 如果请求中的 cookie 存在 isVisit, 则输出 cookie
+// 否则，设置 cookie 字段 isVisit, 并设置过期时间为1分钟
+/*
+if (req.session.isVisit) {
+  req.session.userName = 'tonystuck' // 登入成功，設定 session
+  req.session.isVisit++
+  res.send('<p>第 ' + req.session.isVisit + '次来此页面</p>' + req.session.userName)
+  console.log(req.session)
+} else {
+  req.session.isVisit = 1
+  res.send('欢迎第一次来这里')
+  console.log(req.session)
+}
+*/
+
 router.post('/welcomeuser', (req, res) => {
   const userEmail = req.body.email
   const userPassword = req.body.Password
   const userindex = (users.find(e => (e.email === userEmail) && (e.password === userPassword)))
   if (userindex) {
-    const openinfo = { info: `歡迎${userindex.firstName}回來` }
+    // 登入成功，設定 session
+    req.session.isVisit = 1
+    req.session.userName = userindex.firstName // 登入成功，設定 session
+    console.log(req.session)
     return restaurantList.find() // 取出 Todo model 裡的所有資料
       .lean() // 把 Mongoose 的 Model 物件轉換成乾淨的 JavaScript 資料陣列
-      .then(restaurants => res.render('index', { restaurants, openinfo })) // 將資料傳給 index 樣板
+      .then(restaurants => res.render('welcomeuser', { restaurants })) // 將資料傳給 index 樣板
       .catch(error => console.error(error)) // 錯誤處理
   } else {
     const errorinfo = { error: '..... Username 或Password 錯誤' }
